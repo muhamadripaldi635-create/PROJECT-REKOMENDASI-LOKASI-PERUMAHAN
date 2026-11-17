@@ -72,6 +72,7 @@ class AdminRisikoController extends Controller
             'tipe' => ['nullable', 'string', 'max:120'],
             'tipe_manual' => ['nullable', 'string', 'max:120'],
             'tingkat' => ['required', 'in:rendah,sedang,tinggi,kritis'],
+            'dasar_klasifikasi' => ['nullable', 'string'],
             'deskripsi' => ['nullable', 'string'],
             'mitigasi' => ['nullable', 'string'],
             'status_tindak_lanjut' => ['nullable', 'string', 'max:120'],

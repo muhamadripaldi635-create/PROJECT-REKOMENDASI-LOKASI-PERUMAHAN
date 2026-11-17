@@ -11,7 +11,7 @@ class Risiko extends Model
     use HasFactory;
 
     protected $fillable = [
-        'perumahan_id', 'nama_risiko', 'tipe', 'tingkat', 'deskripsi', 'mitigasi', 'status_tindak_lanjut',
+        'perumahan_id', 'nama_risiko', 'tipe', 'tingkat', 'dasar_klasifikasi', 'deskripsi', 'mitigasi', 'status_tindak_lanjut',
     ];
 
     public function perumahan(): BelongsTo

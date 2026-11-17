@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             GeojsonPerumahanSeeder::class,
+            PerumahanLengkapSeeder::class,
+            FasilitasUmumSeeder::class,
         ]);
     }
 }

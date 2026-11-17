@@ -18,7 +18,7 @@
             <p class="text-xs font-black uppercase tracking-[.25em] text-blue-600">Identitas Perumahan</p>
             <div class="mt-5 grid gap-4 md:grid-cols-2">
                 <label class="md:col-span-2"><span class="text-sm font-black">Nama Perumahan *</span><input name="nama" required value="{{ old('nama', $perumahan->nama) }}" class="mt-2 w-full rounded-2xl border-line px-4 py-3 text-sm focus:border-blue-600 focus:ring-blue-600"></label>
-                <label><span class="text-sm font-black">Jenis Perumahan</span><input name="jenis_perumahan" value="{{ old('jenis_perumahan', $perumahan->jenis_perumahan) }}" class="mt-2 w-full rounded-2xl border-line px-4 py-3 text-sm focus:border-blue-600 focus:ring-blue-600"></label>
+                <label><span class="text-sm font-black">Jenis Perumahan</span><select name="jenis_perumahan" class="mt-2 w-full rounded-2xl border-line px-4 py-3 text-sm focus:border-blue-600 focus:ring-blue-600"><option value="">Pilih jenis perumahan</option>@foreach(['cluster' => 'Cluster', 'komersial' => 'Komersial', 'subsidi' => 'Subsidi', 'individu' => 'Individu'] as $value => $label)<option value="{{ $value }}" @selected(strtolower((string) old('jenis_perumahan', $perumahan->jenis_perumahan)) === $value)>{{ $label }}</option>@endforeach</select></label>
                 <label><span class="text-sm font-black">Status *</span><select name="status" required class="mt-2 w-full rounded-2xl border-line px-4 py-3 text-sm focus:border-blue-600 focus:ring-blue-600">@foreach(['tersedia'=>'Tersedia','proses'=>'Proses','terjual'=>'Terjual','tidak_aktif'=>'Tidak Aktif'] as $value=>$label)<option value="{{ $value }}" @selected(old('status', $perumahan->status) === $value)>{{ $label }}</option>@endforeach</select></label>
                 <label class="flex items-center gap-3"><input type="checkbox" name="is_recommended" value="1" @checked(old('is_recommended', $perumahan->is_recommended)) class="h-4 w-4 rounded border-line text-blue-600 focus:ring-blue-600"><span class="text-sm font-black">Rekomendasi</span></label>
                 <label><span class="text-sm font-black">Harga Minimum</span><input name="harga_min" type="number" min="0" value="{{ old('harga_min', $perumahan->harga_min) }}" class="mt-2 w-full rounded-2xl border-line px-4 py-3 text-sm focus:border-blue-600 focus:ring-blue-600"></label>
@@ -48,6 +48,33 @@
                 <label><span class="text-sm font-black">Provinsi</span><input name="provinsi" value="{{ old('provinsi', $perumahan->provinsi) }}" class="mt-2 w-full rounded-2xl border-line px-4 py-3 text-sm focus:border-blue-600 focus:ring-blue-600"></label>
                 <label><span class="text-sm font-black">Latitude *</span><input id="latitude" name="latitude" type="number" step="any" required value="{{ old('latitude', $perumahan->latitude) }}" class="mt-2 w-full rounded-2xl border-line px-4 py-3 font-mono text-sm focus:border-blue-600 focus:ring-blue-600"></label>
                 <label><span class="text-sm font-black">Longitude *</span><input id="longitude" name="longitude" type="number" step="any" required value="{{ old('longitude', $perumahan->longitude) }}" class="mt-2 w-full rounded-2xl border-line px-4 py-3 font-mono text-sm focus:border-blue-600 focus:ring-blue-600"></label>
+            </div>
+        </section>
+        <section class="card rounded-[2rem] p-6">
+            <p class="text-xs font-black uppercase tracking-[.25em] text-blue-600">Risiko Bencana</p>
+            <p class="mt-2 text-sm text-slate-500">Pilih risiko bencana alam yang relevan dengan lokasi perumahan ini. Risiko ini akan ditampilkan di halaman landing dan peta.</p>
+            <div class="mt-5 space-y-3">
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="risiko_bencana[]" value="aman" @checked(in_array('aman', old('risiko_bencana', $perumahan->risikos()->where('tipe', 'aman')->pluck('tipe')->toArray()))) class="h-4 w-4 rounded border-line text-green-600 focus:ring-green-600">
+                    <span class="text-sm font-bold">
+                        <span class="text-green-700">🟢 Aman</span>
+                        <span class="text-xs text-slate-500">- Kawasan perumahan aman dari risiko bencana</span>
+                    </span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="risiko_bencana[]" value="banjir" @checked(in_array('banjir', old('risiko_bencana', $perumahan->risikos()->where('tipe', 'banjir')->pluck('tipe')->toArray()))) class="h-4 w-4 rounded border-line text-blue-600 focus:ring-blue-600">
+                    <span class="text-sm font-bold">
+                        <span class="text-blue-700">💧 Banjir</span>
+                        <span class="text-xs text-slate-500">- Kawasan perumahan berpotensi terkena banjir</span>
+                    </span>
+                </label>
+                <label class="flex items-center gap-3">
+                    <input type="checkbox" name="risiko_bencana[]" value="longsor" @checked(in_array('longsor', old('risiko_bencana', $perumahan->risikos()->where('tipe', 'longsor')->pluck('tipe')->toArray()))) class="h-4 w-4 rounded border-line text-orange-600 focus:ring-orange-600">
+                    <span class="text-sm font-bold">
+                        <span class="text-orange-700">🏔️ Longsor</span>
+                        <span class="text-xs text-slate-500">- Kawasan perumahan berpotensi terkena longsor</span>
+                    </span>
+                </label>
             </div>
         </section>
         <section class="card rounded-[2rem] p-6">

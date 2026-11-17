@@ -7,6 +7,40 @@
     $mapsUrl = $perumahan->googleMapsDirectUrl();
     $rupiah = fn ($v) => $v ? 'Rp ' . number_format($v, 0, ',', '.') : '-';
     $statusLabel = ['tersedia' => 'Tersedia', 'proses' => 'Proses', 'terjual' => 'Terjual', 'tidak_aktif' => 'Tidak Aktif'][$perumahan->status] ?? '-';
+
+    // Determine single risk: Banjir or Longsor (prioritize highest, level >= sedang)
+    $risikos = $perumahan->risikos;
+    $highestRisk = null;
+    $highestTingkatVal = 0;
+    $tingkatValues = ['rendah' => 1, 'sedang' => 2, 'tinggi' => 3, 'kritis' => 4];
+
+    foreach ($risikos as $r) {
+        if (in_array($r->tipe, ['banjir', 'longsor'])) {
+            $val = $tingkatValues[$r->tingkat] ?? 0;
+            if ($val >= 2 && $val > $highestTingkatVal) {
+                $highestRisk = $r;
+                $highestTingkatVal = $val;
+            }
+        }
+    }
+
+    if ($highestRisk) {
+        $singleRiskName = $highestRisk->nama_risiko;
+        $singleRiskLevel = $highestRisk->tingkat;
+        $singleRiskBasis = $highestRisk->dasar_klasifikasi;
+        $singleRiskStatus = 'danger';
+        $singleRiskDesc = $highestRisk->deskripsi;
+        $singleRiskMitigasi = $highestRisk->mitigasi;
+    } else {
+        $singleRiskName = 'Aman';
+        $singleRiskLevel = 'rendah';
+        $singleRiskBasis = 'Klasifikasi berdasarkan peninjauan data GIS lokasi. Tidak ditemukan risiko banjir atau longsor yang ditandai pada data yang tersedia.';
+        $singleRiskStatus = 'safe';
+        $singleRiskDesc = 'Kawasan perumahan ini aman dari risiko banjir dan longsor.';
+        $singleRiskMitigasi = 'Tetap jaga kebersihan lingkungan dan kelestarian saluran air.';
+    }
+
+    $riskLevelLabels = ['rendah' => 'Rendah', 'sedang' => 'Sedang', 'tinggi' => 'Tinggi', 'kritis' => 'Kritis'];
 @endphp
 
 <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -68,17 +102,20 @@
                 </dl>
             </section>
             <section class="rounded-[2rem] border border-line bg-white p-6 shadow-zenit">
-                <h2 class="text-xl font-black">Risiko Terkait</h2>
-                <div class="mt-4 space-y-3">
-                    @forelse ($perumahan->risikos as $risiko)
-                        <div class="rounded-2xl border border-line bg-soft p-4">
-                            <p class="font-black">{{ $risiko->nama_risiko }}</p>
-                            <p class="mt-1 text-xs font-bold uppercase tracking-wider text-slate-500">{{ $risiko->tipe ?: 'Tipe tidak diisi' }} · {{ ucfirst($risiko->tingkat) }}</p>
-                            <p class="mt-2 text-sm leading-6 text-slate-600">{{ $risiko->deskripsi ?: 'Deskripsi risiko belum tersedia.' }}</p>
+                <h2 class="text-xl font-black">Analisis Risiko Bencana</h2>
+                <div class="mt-4">
+                    <div class="rounded-2xl border border-line bg-soft p-5">
+                        <div class="flex items-center gap-2">
+                            <span class="inline-flex rounded-full {{ $singleRiskStatus === 'danger' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700' }} px-3.5 py-2 text-xs font-black uppercase">
+                                {{ $singleRiskName }} {{ $singleRiskStatus === 'danger' ? '(' . ($riskLevelLabels[$singleRiskLevel] ?? $singleRiskLevel) . ')' : '' }}
+                            </span>
                         </div>
-                    @empty
-                        <p class="rounded-2xl bg-soft p-4 text-sm font-semibold text-slate-500">Belum ada risiko tercatat untuk perumahan ini.</p>
-                    @endforelse
+                        <p class="mt-4 text-sm leading-6 text-slate-700"><strong>Deskripsi:</strong> {{ $singleRiskDesc }}</p>
+                                                <p class="mt-3 text-sm leading-6 text-slate-700"><strong>Klasifikasi berdasarkan:</strong> {{ $singleRiskBasis ?: 'Dasar klasifikasi belum diisi.' }}</p>
+                        @if($singleRiskMitigasi)
+                            <p class="mt-3 text-sm leading-6 text-slate-700"><strong>Rekomendasi Mitigasi:</strong> {{ $singleRiskMitigasi }}</p>
+                        @endif
+                    </div>
                 </div>
             </section>
             @if(!empty($perumahan->fasilitas))

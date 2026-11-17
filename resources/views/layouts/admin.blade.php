@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#00008b">
     <title>@yield('title', 'Admin GIS Perumahan')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +25,7 @@
         }
     </script>
     <style>
+        body { overflow-x:hidden; }
         .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 600,'GRAD' 0,'opsz' 24; vertical-align:middle; }
         input, textarea, select { outline: none; }
         .admin-map { height: 420px; min-height: 320px; background:#f6f7f9; }
@@ -36,13 +38,21 @@
         .btn-black { background:#050505; color:#fff; transition:all .2s ease; }
         .btn-black:hover { background:#111827; transform:translateY(-1px); }
         .card { border:1px solid #e7e9ee; background:#fff; box-shadow:0 16px 60px rgba(15,23,42,.05); }
+        .admin-sidebar-backdrop { display:none; }
+        @media (max-width: 1023px) {
+            .admin-sidebar { position:fixed; inset:0 auto 0 0; z-index:60; width:min(19rem, 86vw); overflow-y:auto; transform:translateX(-100%); transition:transform .25s ease; box-shadow:18px 0 50px rgba(15,23,42,.2); }
+            .admin-sidebar.is-open { transform:translateX(0); }
+            .admin-sidebar-backdrop.is-open { display:block; position:fixed; inset:0; z-index:50; background:rgba(15,23,42,.45); }
+        }
+        @media (max-width: 639px) { .admin-content { padding:1rem; } .admin-header { padding:.85rem 1rem; } .admin-map[style] { height:min(420px, 65vh) !important; } }
         @media print { .no-print { display:none!important; } main { padding:0!important; } }
     </style>
     @stack('head')
 </head>
 <body class="bg-soft font-sans text-ink antialiased">
 <div class="min-h-screen lg:flex">
-    <aside id="admin-sidebar" class="no-print border-r border-line bg-[#00008b] text-white lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:shrink-0">
+    <div id="admin-sidebar-backdrop" class="admin-sidebar-backdrop no-print" aria-hidden="true"></div>
+    <aside id="admin-sidebar" class="admin-sidebar no-print border-r border-line bg-[#00008b] text-white lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:shrink-0">
         <div class="border-b border-white/20 px-5 py-4 lg:px-6 lg:py-6">
             <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
                 <span class="grid h-10 w-10 place-items-center rounded-2xl bg-white text-sm font-black text-[#1e40af]">Z</span>
@@ -58,8 +68,9 @@
                     ['route' => 'admin.dashboard', 'active' => 'admin.dashboard', 'icon' => 'dashboard', 'label' => 'Dashboard'],
                     ['route' => 'admin.perumahans.index', 'active' => 'admin.perumahans.index', 'icon' => 'holiday_village', 'label' => 'Kelola Perumahan'],
                     ['route' => 'admin.perumahans.rekomendasi', 'active' => 'admin.perumahans.rekomendasi', 'icon' => 'thumb_up', 'label' => 'Rekomendasi Perumahan'],
-                    ['route' => 'admin.risikos.index', 'active' => 'admin.risikos.*', 'icon' => 'warning', 'label' => 'Kelola Risiko'],
+                    ['route' => 'admin.fasilitas.index', 'active' => 'admin.fasilitas.*', 'icon' => 'local_hospital', 'label' => 'Fasilitas Umum'],
                     ['route' => 'admin.laporan.index', 'active' => 'admin.laporan.*', 'icon' => 'folder_open', 'label' => 'Laporan'],
+                    ['route' => 'admin.account.edit', 'active' => 'admin.account.*', 'icon' => 'manage_accounts', 'label' => 'Akun'],
                 ];
             @endphp
             @foreach ($items as $item)
@@ -79,23 +90,26 @@
             </a>
             <form method="POST" action="{{ route('admin.logout') }}" class="mt-2">
                 @csrf
-                <button class="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-slate-600 transition hover:bg-rose-50 hover:text-rose-600">
+                <button class="flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left text-white/90 transition hover:bg-white/10 hover:text-white">
                     <span class="material-symbols-outlined text-[20px]">logout</span>Keluar
                 </button>
             </form>
         </nav>
     </aside>
     <div class="min-w-0 flex-1">
-        <header class="no-print sticky top-0 z-40 border-b border-line bg-white/86 backdrop-blur-xl">
-            <div class="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-                <div>
+        <header class="admin-header no-print sticky top-0 z-40 border-b border-line bg-white/86 backdrop-blur-xl">
+            <div class="flex items-center gap-3 px-4 py-4 sm:px-6 lg:px-8">
+                <button id="admin-menu-toggle" type="button" class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-line text-ink lg:hidden" aria-controls="admin-sidebar" aria-expanded="false" aria-label="Buka menu admin">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="min-w-0">
                     <p class="text-[11px] font-black uppercase tracking-[.25em] text-slate-400">GIS Perumahan</p>
-                    <h1 class="text-xl font-black tracking-tight">@yield('page_title', 'Dashboard')</h1>
+                    <h1 class="truncate text-xl font-black tracking-tight">@yield('page_title', 'Dashboard')</h1>
                 </div>
                 <!-- <a href="{{ route('admin.perumahans.create') }}" class="hidden rounded-full btn-blue px-5 py-2.5 text-sm font-black sm:inline-flex">Tambah Data</a> -->
             </div>
         </header>
-        <main class="p-4 sm:p-6 lg:p-8">
+        <main class="admin-content p-4 sm:p-6 lg:p-8">
             @if (session('success'))
                 <div class="mb-6 animate-fadeUp rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-sm font-bold text-emerald-700">{{ session('success') }}</div>
             @endif
@@ -111,6 +125,23 @@
         </main>
     </div>
 </div>
+<script>
+    (() => {
+        const toggle = document.getElementById('admin-menu-toggle');
+        const sidebar = document.getElementById('admin-sidebar');
+        const backdrop = document.getElementById('admin-sidebar-backdrop');
+        if (!toggle || !sidebar || !backdrop) return;
+        const setOpen = open => {
+            sidebar.classList.toggle('is-open', open);
+            backdrop.classList.toggle('is-open', open);
+            toggle.setAttribute('aria-expanded', String(open));
+            toggle.querySelector('.material-symbols-outlined').textContent = open ? 'close' : 'menu';
+        };
+        toggle.addEventListener('click', () => setOpen(!sidebar.classList.contains('is-open')));
+        backdrop.addEventListener('click', () => setOpen(false));
+        sidebar.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+    })();
+</script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 @stack('scripts')
 </body>

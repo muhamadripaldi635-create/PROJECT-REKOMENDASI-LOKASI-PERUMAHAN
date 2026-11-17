@@ -1,0 +1,216 @@
+No;Nama Fasilitas;Kategori;Latitude;Longitude
+1;Apotek Rahayu;Apotek;-69225909;1075934155
+10;Kedai Kopi Bara;Kedai Kopi;-69210534;1075946675
+11;Circle K;Minimarket;-69197519;1075944665
+12;KwangMing Vegetarian;Restoran;-69198568;1075954646
+13;Tahu YUN-YI;Restoran;-69199557;1075963305
+15;Vihara Dewi;Tempat Ibadah;-69204370;1075947414
+18;Alaska Sport Shoes;Toko;-69208356;1075983160
+19;Bank Pundi;Bank;-69217367;1075983104
+20;BNI;Bank;-69219257;1075983159
+21;Ciku Ciku Baby Kids Shop;Toko;-69223917;1075984768
+22;Tahu SB;Restoran;-69229988;1075985499
+23;Apotek Planet Baru;Apotek;-69228524;1075985445
+24;Bank Permata Astana Anyar;Bank;-69236485;1075986679
+25;CMIB Niaga Astana Anyar;Bank;-69244420;1075989066
+26;Kentucky Fried Chicken;Restoran Cepat Saji;-65562982;1067765796
+27;Bakso Sukowati Cikeas;Restoran;-63883909;1069387453
+28;Apotek Al-Fath 21;Apotek;-65568562;1067769190
+29;Transmart Yasmin - Pintu Masuk;Pusat Perbelanjaan;-65566470;1067754660
+30;Transmart Yasmin - Pintu Keluar;Pusat Perbelanjaan;-65564820;1067764080
+32;Kedai Pradipa;Restoran;-63965500;1069432321
+34;McDonald's - Talaga Bestari;Restoran Cepat Saji;-62003504;1064807775
+35;SDN 1 Nagrak;Sekolah;-63864864;1069393137
+37;Puskesmas Pagarsih;Klinik;-69227492;1075930739
+38;Al-Azhar Syifa Budi Cibubur;Sekolah;-63892807;1069437508
+39;ATM Bank Aladin;ATM;-69208632;1075929791
+40;BRILink;Pusat Pembayaran;-69235485;1075953642
+41;BRILink;Pusat Pembayaran;-69230999;1075965575
+44;Toko Sembako Cibadak;Toko;-69239473;1075974731
+45;Tempat Pembuangan Sampah Kelurahan Cibadak;Tempat Pembuangan Sampah;-69228456;1075956184
+46;TK Al Kautsar;Taman Kanak-Kanak;-69254581;1075944389
+47;Masjid Jami Al Mutaqin;Tempat Ibadah;-65422558;1067741979
+48;Ayam Ungkeb Pak Mamid;Restoran Cepat Saji;-65404740;1067757951
+50;Chatime;Kafe;-65561421;1067758428
+51;Raa Cha;Restoran;-65561048;1067757449
+52;Bank Mega;Bank;-65559383;1067757703
+53;Wendy's;Restoran Cepat Saji;-65563006;1067758562
+54;Recheese Factory;Restoran Cepat Saji;-65563220;1067757972
+55;Cobek Penyet;Restoran;-65561634;1067757864
+56;Waffelicious;Kafe;-65560848;1067756791
+57;Yoshinoya;Restoran;-65561767;1067755719
+58;ATM CIMB Niaga;ATM;-65564918;1067818536
+59;Kedai Soto Ibu Rahayu;Restoran;-65561741;1067755061
+60;Baskin Robbins;Es Krim;-65561408;1067756335
+61;Bebek Dower;Restoran;-65560395;1067758495
+62;Tomoro Coffee;Kafe;-65562793;1067756563
+63;Mujigae Korean;Restoran;-65562434;1067756402
+64;Solaria;Restoran;-65560209;1067756966
+65;Toilet SPBU;Fasilitas Umum;-65566291;1067819978
+66;ATM BCA;ATM;-65561954;1067774132
+68;Medikids;Klinik;-65566351;1067823739
+69;Ruang Tengah;Kafe;-65566317;1067824236
+70;Pochajjang Korean BBQ;Restoran;-65564972;1067816263
+71;ATM Mandiri;ATM;-65564932;1067818362
+72;Sari Rasa Johar;Kafe;-65576343;1067780368
+73;Seuhah Abah;Restoran;-65576690;1067776734
+74;Apotek Khanza Farma;Apotek;-65575857;1067780214
+75;Praktik Dokter Adisty;Dokter;-65593570;1066914685
+76;RM Terminal Bakso;Restoran;-65598167;1066897666
+77;Apotik Cibadak;Apotek;-65593976;1066887414
+78;Praktik Dokter Dr. Mirra F;Dokter;-65594110;1066887152
+79;RM Meriah Masakan Padang;Restoran;-65593990;1066913431
+80;ATM CIMB Niaga;ATM;-65594862;1066909052
+81;Sangga Coffee & Resto;Restoran;-65593557;1066883880
+82;SD Negeri Sampora;Sekolah;-66147000;1071318000
+83;SMK Bukit Gloria;Sekolah;-66334070;1071101070
+84;SD Negeri Rawasadang;Sekolah;-66044000;1071242000
+85;SMPS Al Rustala;Sekolah;-66134000;1071333000
+86;SMAS Puspa Bangsa;Sekolah;-65785000;1069591000
+87;SD Negeri Cibadak 02;Sekolah;-65853000;1069686000
+88;SD Negeri Cibadak 03;Sekolah;-65677000;1069551000
+89;SMP Plus Nur Fatihah;Sekolah;-65610400;1066901610
+90;SMK Komputer Indonesia;Sekolah;-65588000;1066892000
+91;SMP Muhammadiyah Jasinga;Sekolah;-65603000;1066888000
+92;SMA Negeri 1 Ciampea;Sekolah;-65561000;1066899000
+93;SDIT Nur Fatihah;Sekolah;-65608570;1066861740
+94;SD Negeri Cibadak 01;Sekolah;-65612000;1066886000
+95;SMP Al-Fatah;Sekolah;-65488000;1067731000
+96;SDIT Al Ikhlas;Sekolah;-65420000;1067773000
+97;SD Sinar Indonesia;Sekolah;-65532000;1067812000
+98;SD Negeri Cibadak;Sekolah;-65435000;1067704000
+99;SD Negeri Kukupu 2;Sekolah;-65514000;1067782000
+102;SMKS Analis Kimia Nusa Bangsa Bogor;Sekolah;-65534000;1067754000
+103;SMP Windian Nugraha;Sekolah;-65502000;1067720000
+104;SMAS As Syuja Iyah;Sekolah;-65988000;1068435000
+105;SD Negeri Nagrak 01;Sekolah;-66048000;1068463000
+106;SD Negeri Nagrak 02;Sekolah;-66154000;1068541000
+107;SD Negeri Pasir Bagade;Sekolah;-66066000;1068492000
+108;SMP Assyujaiyah;Sekolah;-65984000;1068437000
+109;SMP Swasta Nagrak;Sekolah;-66047000;1068462000
+110;SD Negeri Nagrak 01;Sekolah;-63865000;1069393000
+112;SMPS Granada;Sekolah;-63824000;1069375000
+113;SMP Shafa Marwah Islamic School;Sekolah;-63878000;1069387000
+114;SD Bunda Hati Kudus;Sekolah;-63873000;1069561000
+115;SMAS PM At Taqwa;Sekolah;-63812000;1069441000
+116;"SMP Sekolah Alam Cikeas; SD Alam Cikeas";Sekolah;-63901924;1069362232
+117;SMAS Plus Cendekia Cikeas;Sekolah;-63858000;1069469000
+118;SD Al Azhar Syifa Budi;Sekolah;-63889000;1069438000
+119;SMAS Yapisa;Sekolah;-63840000;1069422000
+120;SD Negeri Nagrak 03;Sekolah;-63973000;1069463000
+123;SMA Sekolah Alam Cikeas;Sekolah;-63904380;1069363842
+124;SMP Annuraliyyah;Sekolah;-63978000;1069477000
+125;SMP Kristen Ketapang III;Sekolah;-63997000;1069474000
+126;SMAS An Nur Aliyyah;Sekolah;-63895000;1069487000
+127;"SMAS Bunda Hati Kudus; SMP Bunda Hati Kudus";Sekolah;-63874000;1069556000
+128;SD Shafa Marwah Islamic School;Sekolah;-63878000;1069385000
+129;SMP Al Azhar Syifa Budi Cibubur - Cileungsi;Sekolah;-63895000;1069438000
+130;SMP Pesantren Modern At Taqwa;Sekolah;-63809000;1069442000
+131;SMP Plus Cendikia Cikeas;Sekolah;-63862000;1069462000
+132;Gendhis Legi;Restoran;-63780450;1069582830
+133;Abu Nawwaf;Restoran;-63781916;1069582964
+134;Jus Kode;Restoran Cepat Saji;-63783382;1069583071
+135;Jala Ulam;Restoran;-63784928;1069583018
+136;Tujulangit;Restoran;-63787194;1069582776
+137;Sate Kambing Muda Tegal;Restoran;-63788900;1069582642
+138;Yovie Music School;Sekolah Musik;-63790206;1069582427
+139;Sedap Seafood 88;Restoran;-63796284;1069580872
+140;Bebek & Ayam Mas Budi;Restoran;-63797723;1069589106
+141;Bebek Goreng H. Slamet;Restoran;-63795724;1069588972
+142;Klasse;Restoran;-63792845;1069588999
+143;Indomaret;Minimarket;-63782209;1069589964
+144;Kopi Nako;Kafe;-63776158;1069589884
+145;Mande Elok;Restoran;-63806372;1069586044
+146;Mazda;Dealer Mobil;-63894031;1069475661
+147;Family Car Wash;Cuci Mobil;-63895808;1069480840
+148;Astra Otoservice;Bengkel;-63895142;1069478865
+149;Mitsubishi;Dealer Mobil;-63900954;1069475102
+150;Wuling;Dealer Mobil;-63887293;1069446938
+151;Caroline.id;Dealer Mobil;-63891921;1069442356
+152;BP;SPBU;-63899547;1069493581
+153;Kopi Tuku;Kafe;-63901176;1069495444
+154;Alfamart;Minimarket;-63899103;1069496300
+159;Pizza Hut;Restoran;-63885340;1069441534
+160;Alfamart;Minimarket;-63888261;1069428884
+161;Tekko;Restoran;-63891484;1069431672
+162;Bebek Kaleyo;Restoran;-63895273;1069428808
+163;Shabu Kojo;Restoran;-63887790;1069425432
+164;Indomaret;Minimarket;-65564961;1067819231
+165;Pempek Terang Bulan;Restoran;-65565183;1067817398
+166;Alfamart;Minimarket;-69198392;1075948607
+167;BP;SPBU;-63862183;1069493765
+169;SPBU Pertamina;SPBU;-65567267;1067818071
+171;Pasar Induk Kemang (TU);Pasar;-65482177;1067742496
+172;Kemenangan Jaya;Toko Peralatan;-65531257;1067764776
+173;Circle K;Minimarket;-65561450;1067773591
+174;Sekolah Bunda Hati Kudus;Sekolah;-63869603;1069555161
+175;Masjid Al-Hidayah;Tempat Ibadah;-63934690;1069469257
+177;SMK Analis Kimia Nusa Bangsa;Sekolah;-65535608;1067745503
+178;Al-Mekkah;Tempat Ibadah;-65385267;1067794683
+180;Shuka Grill Bogor;Restoran;-65568434;1067767516
+181;Lotte Grosir Bogor;Supermarket;-65575350;1067796363
+183;BRI;Bank;-69212737;1075958093
+184;SD Negeri 092 Cibadak Andir;Sekolah;-69215195;1075966897
+185;Bank BNI Astana Anyar;Bank;-69220059;1075982729
+186;Bank Banten;Bank;-69218140;1075983467
+187;Taman Kanak Kanak Gamaliel;Taman Kanak-Kanak;-69215960;1075978052
+188;Masjid Nurul Ikhlas;Tempat Ibadah;-65370876;1067706733
+189;Masjid An Nurul Taqwa;Tempat Ibadah;-65382890;1067716483
+190;Masjid Darussalam;Tempat Ibadah;-65409157;1067751313
+191;Masjid At Taqwa;Tempat Ibadah;-65507678;1067741143
+192;Masjid Nurul Taqwa;Tempat Ibadah;-65523476;1067770029
+193;Masjid Al Muqorobin;Tempat Ibadah;-65489537;1067739831
+194;Masjid Al Mutaqin;Tempat Ibadah;-65446665;1067777103
+195;Masjid Awwabin;Tempat Ibadah;-65418811;1067761503
+196;Masjid Al Ikhlas;Tempat Ibadah;-65417566;1067772063
+197;Masjid Al Muqoraobin;Tempat Ibadah;-65379875;1067681157
+198;Bunda Suryatni Rumah Sakit Ibu & Anak;Rumah Sakit;-65525508;1067752862
+199;Adil Super;Toko Peralatan;-65559923;1067779882
+200;Puskesmas Pembantu Cibadak;Klinik;-65446332;1067747165
+201;Pos Kamling RW 07;Pos Keamanan;-69238692;1075962018
+202;Toko Kusmin;Toko;-69241132;1075941560
+203;Bank CIMB Niaga;Bank;-69244556;1075988208
+204;Raudhatul Athfal Assafariyah;Taman Kanak-Kanak;-69250065;1075962979
+205;Bank BCA;Bank;-69251138;1075990591
+206;SD Kemah Indonesia;Sekolah;-69252899;1075942735
+208;DTA Al Kautsar;Sekolah;-69255321;1075944767
+209;SDN 003 Pagarsih Bandung;Sekolah;-69230575;1075944555
+210;Toko SRC Haiti;Toko;-69231718;1075934290
+211;Universitas IPWIJA Kampus II Cikeas;Perguruan Tinggi;-63880578;1069395736
+213;Eka Hospital Cibubur;Rumah Sakit;-63851351;1069545355
+214;Bogor Great Mall;Supermarket;-65560457;1067755713
+215;Mushola Al Muttaqina Imaama;Tempat Ibadah;-65418604;1067691078
+216;Peternakan Sapi;Peternakan;-63826763;1069454613
+217;Warung Tape Uli;Pusat Makanan;-63725725;1069398173
+218;Universitas Nusa Bangsa;Universitas;-65523370;1067765744
+220;HokBen;Restoran Cepat Saji;-63881973;1069432353
+221;Pasar Ulekan Pagarsih;Pasar;-69233648;1075955674
+222;TK Fitra Sari;Taman Kanak-Kanak;-69243601;1075938488
+223;Alfamart;Minimarket;-63868630;1069395316
+224;SD Kristen Gamaliel, SMP Kristen Gamaliel, SMA Kristen Gamaliel;Sekolah;-69203732;1075970459
+225;Masjid Jami Al-Muttaqin;Tempat Ibadah;-63830541;1069492370
+226;Bank Permata;Bank;-69209332;1075981024
+227;Bank Central Asia;Bank;-69200024;1075946029
+229;Alfamart;Minimarket;-69209814;1075929310
+232;Madrasah At-Taqwa;Sekolah;-69240526;1075962597
+233;SD Negeri 265 Bandung Kulon;Sekolah;-69216289;1075923542
+234;Pos Kamling RW 05;Pos Keamanan;-69262198;1075960218
+235;Pos Satpam Jalan Jendral Sudirman;Pos Keamanan;-69196125;1075932963
+236;Pos Satpam BBKPM;Pos Keamanan;-69210521;1075964178
+237;Pos Linmas RW 02;Pos Keamanan;-69207032;1075972989
+238;Pos Satpam Bank Permata;Pos Keamanan;-69209971;1075983191
+243;Sekolah Kristen Ketapang III;Sekolah;-64002807;1069479326
+244;Indomaret;Minimarket;-63882295;1069412463
+247;KFC;Restoran Cepat Saji;-63880091;1069424905
+248;Richeese Factory;Restoran Cepat Saji;-63878700;1069422263
+249;Gereja Maria Bunda Segala Bangsa;Tempat Ibadah;-63853248;1069560861
+250;SPBU BP AKR;SPBU;-65565516;1067793027
+251;Latika Beauty Care;Klinik;-65573154;1067778917
+253;Indomaret;Minimarket;-65594893;1066909368
+254;Kampus 2 STKIP Muhammadiyah Bogor;Perguruan Tinggi;-65602137;1066889288
+255;SMAN 1 Ciampea;Sekolah;-65561794;1066895846
+256;Masjid Al Mabruk;Tempat Ibadah;-65624178;1066892579
+257;Masjid Al Muhajirin;Tempat Ibadah;-65641993;1066903371
+258;Masjid Al Hidayah;Tempat Ibadah;-65685311;1066888086
+259;SD Tunas Cendikia;Sekolah;-65653332;1066809911
+268;Masjid Athoillah;Tempat Ibadah;-63817892;1069581782

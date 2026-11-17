@@ -49,17 +49,9 @@
                         <option value="{{ $kecamatan }}" @selected(request('kecamatan') === $kecamatan)>{{ $kecamatan }}</option>
                     @endforeach
                 </select>
-                <select name="status" class="min-w-[160px] rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 focus:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-100">
-                    <option value="">Semua Status</option>
-                    @foreach($statusOptions as $status)
-                        <option value="{{ $status }}" @selected(request('status') === $status)>{{ ucfirst(str_replace('_', ' ', $status)) }}</option>
-                    @endforeach
-                </select>
                 <button class="rounded-2xl bg-blue-600 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-700">Filter</button>
             </form>
             <div class="flex flex-wrap items-center gap-3 justify-end">
-                <a href="{{ route('admin.perumahans.rekomendasi.export', request()->query()) }}" class="rounded-2xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-700 hover:bg-slate-100">Export</a>
-                <button type="button" class="rounded-2xl bg-slate-100 px-5 py-3 text-sm font-black text-slate-700 hover:bg-slate-200">Filter Lanjutan</button>
             </div>
         </div>
     </section>

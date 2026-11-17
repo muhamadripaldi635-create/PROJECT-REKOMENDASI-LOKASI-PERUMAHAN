@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Perumahan;
 use App\Models\PerumahanImage;
+use App\Models\Risiko;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -108,9 +109,11 @@ class AdminPerumahanController extends Controller
         $validated = $this->validated($request);
         $validated['slug'] = Perumahan::uniqueSlug($validated['nama']);
         $validated['fasilitas'] = $this->parseFasilitas($request->input('fasilitas'));
+        $risikoBencana = $request->input('risiko_bencana', []);
 
         $perumahan = Perumahan::create($validated);
         $this->storeImages($request, $perumahan);
+        $this->storeRisikoBencana($perumahan, $risikoBencana);
 
         return redirect()->route('admin.perumahans.index')->with('success', 'Data perumahan berhasil ditambahkan.');
     }
@@ -128,10 +131,12 @@ class AdminPerumahanController extends Controller
         $validated = $this->validated($request, $perumahan->id);
         $validated['slug'] = Perumahan::uniqueSlug($validated['nama'], $perumahan->id);
         $validated['fasilitas'] = $this->parseFasilitas($request->input('fasilitas'));
+        $risikoBencana = $request->input('risiko_bencana', []);
 
         $perumahan->update($validated);
         $this->deleteSelectedImages($request, $perumahan);
         $this->storeImages($request, $perumahan);
+        $this->updateRisikoBencana($perumahan, $risikoBencana);
 
         return redirect()->route('admin.perumahans.edit', $perumahan)->with('success', 'Data perumahan berhasil diperbarui.');
     }
@@ -170,6 +175,8 @@ class AdminPerumahanController extends Controller
             'website_url' => ['nullable', 'url', 'max:500'],
             'google_maps_url' => ['nullable', 'string', 'max:800'],
             'is_recommended' => ['sometimes', 'boolean'],
+            'risiko_bencana' => ['nullable', 'array'],
+            'risiko_bencana.*' => ['in:aman,banjir,longsor'],
             'gambar' => ['nullable', 'array'],
             'gambar.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
             'hapus_gambar' => ['nullable', 'array'],
@@ -225,5 +232,57 @@ class AdminPerumahanController extends Controller
             Storage::disk('public')->delete($image->path);
             $image->delete();
         }
+    }
+
+    private function storeRisikoBencana(Perumahan $perumahan, array $risikoBencana): void
+    {
+        // Delete existing disaster risks
+        $perumahan->risikos()->whereIn('tipe', ['aman', 'banjir', 'longsor'])->delete();
+
+        // Create new disaster risks
+        $risikoMap = [
+            'aman' => 'Aman',
+            'banjir' => 'Banjir',
+            'longsor' => 'Longsor',
+        ];
+
+        foreach ($risikoBencana as $tipe) {
+            if (array_key_exists($tipe, $risikoMap)) {
+                Risiko::create([
+                    'perumahan_id' => $perumahan->id,
+                    'nama_risiko' => $risikoMap[$tipe],
+                    'tipe' => $tipe,
+                    'tingkat' => $tipe === 'aman' ? 'rendah' : 'sedang',
+                                        'dasar_klasifikasi' => $this->getDefaultDasarKlasifikasi($tipe),
+                    'deskripsi' => $this->getDefaultDeskripsi($tipe),
+                    'status_tindak_lanjut' => 'dipantau',
+                ]);
+            }
+        }
+    }
+
+    private function updateRisikoBencana(Perumahan $perumahan, array $risikoBencana): void
+    {
+        $this->storeRisikoBencana($perumahan, $risikoBencana);
+    }
+
+    private function getDefaultDeskripsi(string $tipe): string
+    {
+        $deskripsi = [
+            'aman' => 'Kawasan perumahan ini aman dari risiko banjir dan longsor berdasarkan data GIS.',
+            'banjir' => 'Kawasan perumahan ini berpotensi terkena banjir. Perlu perhatian khusus dalam mitigasi risiko.',
+            'longsor' => 'Kawasan perumahan ini berpotensi terkena longsor. Perlu perhatian khusus dalam mitigasi risiko.',
+        ];
+
+        return $deskripsi[$tipe] ?? 'Deskripsi risiko belum tersedia.';
+    }
+
+    private function getDefaultDasarKlasifikasi(string $tipe): string
+    {
+        return match ($tipe) {
+            'longsor' => 'Klasifikasi berdasarkan interpretasi lokasi pada data GIS, terutama indikasi topografi atau kemiringan lahan, kondisi tanah/geologi, dan riwayat longsor bila tersedia. Penetapan ini perlu dikonfirmasi dengan survei lapangan atau data teknis resmi.',
+            'banjir' => 'Klasifikasi berdasarkan interpretasi lokasi pada data GIS, terutama kedekatan dengan sungai atau saluran air, kondisi elevasi dan drainase, serta riwayat banjir bila tersedia. Penetapan ini perlu dikonfirmasi dengan survei lapangan atau data teknis resmi.',
+            default => 'Klasifikasi berdasarkan peninjauan data GIS lokasi. Tidak ditemukan risiko banjir atau longsor yang ditandai pada data yang tersedia.',
+        };
     }
 }

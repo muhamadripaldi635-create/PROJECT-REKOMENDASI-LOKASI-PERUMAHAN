@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Perumahan;
+use App\Models\FasilitasUmum;
 use Illuminate\View\View;
 
 class PublicController extends Controller
@@ -12,8 +13,9 @@ class PublicController extends Controller
         $perumahans = Perumahan::with(['images', 'risikos'])->latest()->get();
         $extraKecamatans = collect(['Cisaat', 'Cikembar', 'Kelapanunggal', 'Parakansalak', 'Cidahu']);
         $kecamatans = $perumahans->pluck('kecamatan')->filter()->concat($extraKecamatans)->unique()->sort()->values();
-        $riskTypes = ['banjir' => 'Banjir', 'longsor' => 'Longsor'];
+        $riskTypes = ['banjir' => 'Banjir', 'longsor' => 'Longsor', 'aman' => 'Aman'];
         $recommendedPerumahans = collect();
+        $fasilitasUmum = FasilitasUmum::query()->orderBy('source_no')->get();
         if (Perumahan::hasRecommendationColumn()) {
             $recommendedPerumahans = $perumahans->where('is_recommended', true)->take(3);
         }
@@ -24,7 +26,7 @@ class PublicController extends Controller
                 ->take(3);
         }
 
-        return view('public.home', compact('perumahans', 'kecamatans', 'recommendedPerumahans', 'riskTypes'));
+        return view('public.home', compact('perumahans', 'kecamatans', 'recommendedPerumahans', 'riskTypes', 'fasilitasUmum'));
     }
 
     public function show(Perumahan $perumahan): View
